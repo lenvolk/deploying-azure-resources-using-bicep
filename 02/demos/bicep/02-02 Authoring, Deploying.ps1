@@ -45,7 +45,7 @@ code .\manual-arm-storage-account.bicep
 # Create new bicep for a subscription deployment
 code .\subscription-scope.bicep
 # Deploy RG
-az deployment sub create --location $location --template-file .\subscription-scope.bicep
+az deployment sub create --location $location --template-file .\bicep-fragments\subscription-scope.bicep --what-if
 
 # Management Group Scope
 # az deployment mg create --location <location> --template-file <path-to-bicep>
