@@ -20,3 +20,8 @@ resource storageaccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
     supportsHttpsTrafficOnly: true
   }
 }
+
+output RGID string = resourceGroup().id
+output DeploymentName string = deployment().name
+output UniqueString string = uniqueString(resourceGroup().id, deployment().name)
+output StorageName string = storage_name

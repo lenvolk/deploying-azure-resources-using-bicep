@@ -43,3 +43,4 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
 
 output vnetname string = vnetname
 output vnettype string = virtualNetwork.type
+output depl_loc string = deployment().location
