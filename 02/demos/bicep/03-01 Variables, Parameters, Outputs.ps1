@@ -56,7 +56,7 @@ az deployment group create --resource-group $RG --template-file .\bicep-fragment
 # Objects in combination with parameters
 code aks.bicep
 # Deploy 
-az deployment group create --resource-group $RG --template-file .\aks.bicep --parameters tierType=test
+az deployment group create --resource-group $RG --template-file .\bicep-fragments\aks.bicep --parameters tierType=test
 az aks list --resource-group $RG -o table
 
 # Outputs
@@ -68,7 +68,7 @@ del .\vnet-output.json
 code .\vnet.bicep
 
 # Deploy again
-az deployment group create --resource-group $RG --template-file .\vnet.bicep --parameters vnetname=firstvnet
+az deployment group create --resource-group $RG --template-file .\bicep-fragments\vnet.bicep --parameters vnetname=firstvnet
 
 # Check result
 az deployment group show --resource-group $RG --name vnet --query 'properties.outputs' 
@@ -88,10 +88,10 @@ az deployment group create --resource-group $RG --template-file .\manual-arm-sto
 copy aks.bicep output.bicep
 code .\output.bicep
 
-az deployment group create --resource-group $RG --template-file .\output.bicep `
+az deployment group create --resource-group $RG --template-file .\bicep-fragments\output.bicep `
     --parameters tierType=test --query 'properties.outputs.deploymentSettings.value' 
 
-az deployment group create --resource-group $RG --template-file .\output.bicep `
+az deployment group create --resource-group $RG --template-file .\bicep-fragments\output.bicep `
     --parameters tierType=prod --query 'properties.outputs.deploymentSettings.value' 
 
 # Variables can also originate from JSON using json(loadTextContent('./file.json'))
