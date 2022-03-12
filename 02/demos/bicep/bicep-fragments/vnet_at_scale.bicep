@@ -15,7 +15,7 @@ param vNetSettings object = {
   ]
 }
 
-@batchSize(2)
+@batchSize(2) // how many vnets to be created at the same time
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = [for i in range(0, vnet_count): {
   name: '${vnet_prefix}${i}'
   location: resourceGroup().location
