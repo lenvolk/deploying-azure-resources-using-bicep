@@ -1,3 +1,8 @@
+# $subscription = "c6aa1fdc-66a8-446e-8b37-7794cd545e44"
+# Connect-AzAccount -Subscription $subscription
+# Set-AzContext -Subscription "AzIntConsumption"
+# Disconnect-AzAccount
+
 # deploying-azure-resources-using-bicep
 
 Bicep Training
