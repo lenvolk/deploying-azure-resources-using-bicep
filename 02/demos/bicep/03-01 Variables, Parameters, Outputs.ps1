@@ -49,12 +49,12 @@ az resource list --resource-group $RG -o table
 az deployment group list --resource-group $RG -o table
 
 # Variables and Parameters can be objects!
-code vnet.bicep
+code .\bicep-fragments\vnet.bicep
 # Deploy
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\vnet.bicep --parameters vnetname=firstvnet --mode complete
 
 # Objects in combination with parameters
-code aks.bicep
+code .\bicep-fragments\aks.bicep
 # Deploy 
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\aks.bicep --parameters tierType=test
 az aks list --resource-group $RG -o table
@@ -65,7 +65,7 @@ code .\vnet-output.json
 del .\vnet-output.json
 
 # Add an output
-code .\vnet.bicep
+code .\bicep-fragments\vnet.bicep
 
 # Deploy again
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\vnet.bicep --parameters vnetname=firstvnet
@@ -74,7 +74,7 @@ az deployment group create --resource-group $RG --template-file .\bicep-fragment
 az deployment group show --resource-group $RG --name vnet --query 'properties.outputs' 
 
 # We can also use values generated at/resulting from deployment
-code aks.bicep
+code .\bicep-fragments\aks.bicep
 
 az deployment group create --resource-group $RG --template-file .\aks.bicep `
     --parameters tierType=test --query 'properties.outputs.fqdn.value' -o tsv
@@ -86,7 +86,7 @@ az deployment group create --resource-group $RG --template-file .\manual-arm-sto
     
 # Outputs are also a great way to test your variables and functions!
 copy aks.bicep output.bicep
-code .\output.bicep
+code .\bicep-fragments\output.bicep
 
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\output.bicep `
     --parameters tierType=test --query 'properties.outputs.deploymentSettings.value' 
@@ -94,7 +94,7 @@ az deployment group create --resource-group $RG --template-file .\bicep-fragment
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\output.bicep `
     --parameters tierType=prod --query 'properties.outputs.deploymentSettings.value' 
 
-# Variables can also originate from JSON using json(loadTextContent('./file.json'))
+# Variables can also originate from JSON using json(loadTextContent('./sample.json))
 code sample.json
 code ip-with-JSON.bicep
 

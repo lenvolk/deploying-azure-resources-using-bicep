@@ -1,6 +1,8 @@
+az cloud set --name AzureUSGovernment
 az login --only-show-errors -o table --query Dummy
+$subscription = "5fac2518-e2da-490f-864f-08eecf055c36"
 az account set -s $Subscription
-
+Disconnect-AzAccount
 # deploying-azure-resources-using-bicep
 
 Bicep Training

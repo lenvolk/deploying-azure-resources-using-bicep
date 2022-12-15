@@ -5,7 +5,7 @@
 code sql.bicep
 
 # Create a KV and secret
-code keyvault.bicep
+code .\bicep-fragments\keyvault.bicep
 
 $PW = "P@ssw0rdP@ssw0rd"
 
@@ -14,7 +14,7 @@ $KVName = (az deployment group create --resource-group $RG --template-file .\bic
 
 az keyvault secret show --vault-name $KVName --name adminpassword
 
-code sql_kv.bicep
+code .\bicep-fragments\sql_kv.bicep
 
 $sqlserver = "sqlserver" + (Get-Random -Minimum 100000000 -Maximum 99999999999)
 

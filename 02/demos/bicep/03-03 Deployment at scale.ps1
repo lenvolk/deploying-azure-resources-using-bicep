@@ -1,5 +1,5 @@
 # Variables
-. '.\bicep-fragments\00 Variables.ps1'
+. '.\00 Variables.ps1'
 
 # Deployment at scale 
 $Vnets = 5

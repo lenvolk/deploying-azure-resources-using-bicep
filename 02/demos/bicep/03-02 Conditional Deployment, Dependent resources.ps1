@@ -2,7 +2,7 @@
 . '.\00 Variables.ps1'
 
 # Conditional Deployment
-code nsg.bicep
+code .\bicep-fragments\nsg.bicep
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\nsg.bicep --parameters nsg_name=nsg_withRDP allow_rdp=true --mode complete --what-if
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\nsg.bicep --parameters nsg_name=nsg_withoutRDP allow_rdp=false
 # Check result
