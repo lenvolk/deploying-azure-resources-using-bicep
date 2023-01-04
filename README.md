@@ -15,3 +15,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $RG -TemplateFile .\bicep-fragm
 az resource list --resource-group $RG -o table
 az deployment group list --resource-group $RG -o table
 
+
+# Rewf
+## Vnet to Vnet https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/vnet-to-vnet-bgp
