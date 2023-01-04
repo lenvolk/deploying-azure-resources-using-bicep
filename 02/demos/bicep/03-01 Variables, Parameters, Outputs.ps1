@@ -28,7 +28,7 @@ az deployment group list --resource-group $RG -o table
 code .\storage-parameters.bicep
 # Deploy twice
 az deployment group create --resource-group $RG --template-file .\bicep-fragments\storage-parameters.bicep --parameters prefix=storenew 
-az deployment group create --resource-group $RG --template-file .\bicep-fragments\storage-parameters.bicep --parameters prefix=storenew --mode complete
+az deployment group create --resource-group $RG --template-file .\bicep-fragments\storage-parameters.bicep --parameters prefix=storenew  complete
 # Show result
 az resource list --resource-group $RG -o table
 az deployment group list --resource-group $RG -o table
